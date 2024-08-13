@@ -17,4 +17,5 @@ Una vez instalado todo lo anterior, seguir los siguientes pasos:
 
 <h1>Correr el proyecto<h1/>
 - Para correr el proyecto, ejecutar el siguiente comando en la raíz del mismo:
+    
 ```php artisan serve```
