@@ -18,7 +18,7 @@ class RegisterController extends Controller
     
         Auth::login($user);
 
-        return route('home');
+        return redirect(route('homepage'));
     }    
 
     public function login(Request $request) {
@@ -29,14 +29,14 @@ class RegisterController extends Controller
                 Auth::login($user);
                 $request->session()->regenerate();
 
-                return view('home');
+                return redirect(route('homepage'));
             } else {
 
-                return view('login');
+                return redirect(route('viewLogin'));
             }
         } else {
 
-            return view('login');
+            return redirect(route('viewLogin'));
         }
     }
     
@@ -48,6 +48,6 @@ class RegisterController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return view('login');
+        return redirect(route('viewLogin'));
     }   
 }
