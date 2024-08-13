@@ -21,4 +21,7 @@ class ViewController extends Controller
         return view('home');
     }
 
+    public function showFormCrearProducto() {
+        return view('crearProducto');
+    }
 }

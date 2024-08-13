@@ -3,7 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ViewController;
-
+use App\Http\Controllers\ProductController;
+use Illuminate\View\ViewException;
 
 // Home
 Route::get('/', [ViewController::class, 'showHome'])->middleware('auth')->name('homepage');
@@ -19,4 +20,6 @@ Route::post('/inicia-sesion', [RegisterController::class, 'login'])->name('inici
 // Logout
 Route::get('/logout', [RegisterController::class, 'logout'])->name('logout');
 
-
+// CRUD productos
+Route::get('/admin/formCrearProducto', [ViewController::class, 'showFormCrearProducto'])->middleware('auth')->name('viewFormCrearProducto');
+Route::post('/admin/crearProducto', [ProductController::class, 'create'])->middleware('auth')->name('crearProducto');
