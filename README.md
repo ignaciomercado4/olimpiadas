@@ -1,21 +1,30 @@
-<h1>Guía de instalación<h1/>
-Requisitos:
-- Instalar el xampp con php 8.2 - https://sourceforge.net/projects/xampp/
-- Agregar la carpeta de php que descargó xampp como variable de entorno
-- Instalar composer (la versión mas reciente) - https://getcomposer.org/download/
-- Instalar 7zip - https://www.7-zip.org/
+# Guía de Instalación
 
-Una vez instalado todo lo anterior, seguir los siguientes pasos:
-- En CMD, dirigirse a la carpeta htdocs de xampp
-- Clonar el repositorio con el siguiente comando:
-  ```git clone https://github.com/ignaciomercado4/olimpiadas.git```
-- Una vez clonado, entrar a la carpeta que se acaba de crear (olimpiadas-master), y correr los siguientes comandos en cmd:
-```composer i```
-```php artisan cache:clear```
-```php artisan config:clear```
-```php artisan config:cache```
+### Requisitos
 
-<h1>Correr el proyecto<h1/>
-- Para correr el proyecto, ejecutar el siguiente comando en la raíz del mismo:
-    
-```php artisan serve```
+1. **Instalar XAMPP con PHP 8.2**  
+   - [Descargar XAMPP](https://sourceforge.net/projects/xampp/)
+   - Agregar la carpeta de PHP que descargó XAMPP como variable de entorno.
+
+2. **Instalar Composer (Versión más reciente)**  
+   - [Descargar Composer](https://getcomposer.org/download/)
+
+3. **Instalar 7zip**  
+   - [Descargar 7zip](https://www.7-zip.org/)
+
+### Pasos de Instalación
+
+1. Abrir CMD y dirigirse a la carpeta `htdocs` de XAMPP.
+2. Clonar el repositorio con el siguiente comando:
+   ```bash
+   git clone https://github.com/ignaciomercado4/olimpiadas.git
+3. Entrar a la carpeta que se acaba de crear (olimpiadas-master) y ejecutar los siguientes comandos:
+    ```composer i```
+    ```php artisan cache:clear```
+    ```php artisan config:clear```
+    ```php artisan config:cache```
+
+# Correr el proyecto
+1. Correr los sig. comandos en la raíz del proyecto:
+   ```php artisan serve```
+   
