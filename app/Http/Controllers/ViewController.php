@@ -22,6 +22,12 @@ class ViewController extends Controller
     }
 
     public function showFormCrearProducto() {
+        
         return view('crearProducto');
+    }
+
+    public function showProductoCreadoExitosamente() {
+
+        return view('productoCreadoExitosamente');
     }
 }

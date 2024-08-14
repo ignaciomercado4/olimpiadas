@@ -20,6 +20,13 @@ Route::post('/inicia-sesion', [RegisterController::class, 'login'])->name('inici
 // Logout
 Route::get('/logout', [RegisterController::class, 'logout'])->name('logout');
 
+// Ver productos existenes
+Route::get('/admin/productosExistentes', [ProductController::class, 'showProductosExistentes'])->middleware('auth')->name('productosExistentes');
+
 // CRUD productos
 Route::get('/admin/formCrearProducto', [ViewController::class, 'showFormCrearProducto'])->middleware('auth')->name('viewFormCrearProducto');
 Route::post('/admin/crearProducto', [ProductController::class, 'create'])->middleware('auth')->name('crearProducto');
+Route::get('/admin/crearProducto/success', [ViewController::class, 'showProductoCreadoExitosamente'])->middleware('auth')->name('productoCreadoExitosamente');
+Route::match(['put', 'patch'], '/admin/modificarProducto/{id}', [ProductController::class, 'modify'])->middleware('auth')->name('modificarProducto');
+Route::delete( '/admin/eliminarProducto/{id}', [ProductController::class, 'delete'])->middleware('auth')->name('eliminarProducto');
+
