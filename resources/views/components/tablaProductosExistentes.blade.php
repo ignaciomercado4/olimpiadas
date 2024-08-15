@@ -21,6 +21,9 @@
                 Fecha de creación
             </th>
             <th>
+                Stock
+            </th>
+            <th>
                 Acciones
             </th>
         </tr>
@@ -31,6 +34,7 @@
                 <td>{{ $producto->titulo }}</td>
                 <td>{{ $producto->descripcion }}</td>
                 <td>{{ $producto->precio_unitario }}</td>
+                <td>{{ $producto->stock }}</td>
                 <td>{{ date('d/m/Y', strtotime($producto->created_at)) }}</td>
                 <td>
                     <button 

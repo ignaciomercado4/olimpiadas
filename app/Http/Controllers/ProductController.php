@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
@@ -33,5 +34,7 @@ class ProductController extends Controller
         $productosExistentes = Product::all();
 
         return view('productosExistentes', compact('productosExistentes'));
-    }
+        }
+
+
 }
