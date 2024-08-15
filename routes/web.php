@@ -7,7 +7,7 @@ use App\Http\Controllers\ProductController;
 use Illuminate\View\ViewException;
 
 // Home
-Route::get('/', [ViewController::class, 'showHome'])->middleware('auth')->name('homepage');
+Route::get('/admin', [ViewController::class, 'showHome'])->middleware('auth')->name('homepage');
 
 // Rutas de registro
 Route::get('/register', [ViewController::class, 'showRegister'])->name('viewRegister');
