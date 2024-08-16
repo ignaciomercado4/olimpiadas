@@ -26,9 +26,10 @@
                         <p class="card-text">
                             <strong>Stock:</strong> {{ $producto->stock }}
                         </p>
-                        <a href="" class="btn btn-primary">
-                            Ver Producto
-                        </a>
+                        <form action="{{ route('cart-add', $producto->id) }}" method="POST">
+                            @csrf
+                            <button type="submit" class="btn btn-primary">Agregar al Carrito</button>
+                        </form>
                     </div>
                 </div>
             </div>

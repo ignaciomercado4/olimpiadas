@@ -5,6 +5,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ViewController;
 use App\Http\Controllers\ProductController;
 use Illuminate\View\ViewException;
+use App\Http\Controllers\CartController;
 
 // Home
 Route::get('/', [ViewController::class, 'showHome'])->middleware('auth')->name('homepage');
@@ -20,7 +21,7 @@ Route::post('/inicia-sesion', [RegisterController::class, 'login'])->name('inici
 // Logout
 Route::get('/logout', [RegisterController::class, 'logout'])->name('logout');
 
-// Ver productos existenes
+// Ver productos existentes
 Route::get('/admin/productosExistentes', [ProductController::class, 'showProductosExistentes'])->middleware('auth')->name('productosExistentes');
 
 // CRUD productos
@@ -29,4 +30,11 @@ Route::post('/admin/crearProducto', [ProductController::class, 'create'])->middl
 Route::get('/admin/crearProducto/success', [ViewController::class, 'showProductoCreadoExitosamente'])->middleware('auth')->name('productoCreadoExitosamente');
 Route::match(['put', 'patch'], '/admin/modificarProducto/{id}', [ProductController::class, 'modify'])->middleware('auth')->name('modificarProducto');
 Route::delete( '/admin/eliminarProducto/{id}', [ProductController::class, 'delete'])->middleware('auth')->name('eliminarProducto');
+
+// Carrito de compras
+Route::middleware(['auth'])->group(function () {
+    Route::post('/cart/add/{productId}', [CartController::class, 'addToCart'])->name('cart-add');
+    Route::get('/cart', [CartController::class, 'viewCart'])->name('cart-index');
+});
+
 

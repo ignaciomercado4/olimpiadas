@@ -13,6 +13,7 @@ class Product extends Model
         'codigo_producto',
         'titulo',
         'descripcion',
-        'precio_unitario'
+        'precio_unitario',
+        'stock'
     ];
 }
