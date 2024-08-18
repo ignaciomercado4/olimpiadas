@@ -44,6 +44,7 @@
                     style="font-size: 12px;"
                     data-id="{{$producto->id}}"
                     data-codigo="{{$producto->codigo_producto}}"
+                    data-stock="{{$producto->stock}}"
                     data-titulo="{{$producto->titulo}}"
                     data-descripcion="{{$producto->descripcion}}"
                     data-precio="{{$producto->precio_unitario}}"
@@ -61,6 +62,7 @@
                     data-id="{{$producto->id}}"
                     data-codigo="{{$producto->codigo_producto}}"
                     data-titulo="{{$producto->titulo}}"
+                    data-stock="{{$producto->stock}}"
                     data-descripcion="{{$producto->descripcion}}"
                     data-precio="{{$producto->precio_unitario}}"
                     data-fecha="{{ date('d/m/Y', strtotime(($producto->created_at))) }}"
@@ -90,6 +92,7 @@
             $('#modificarTituloInput').val(btn.dataset.titulo);
             $('#modificarDescripcionInput').val(btn.dataset.descripcion);
             $('#modificarPrecioInput').val(btn.dataset.precio);
+            $('#modificarStockInput').val(btn.dataset.stock);
             $('#modificarFechaInput').val(btn.dataset.fecha);
 
             $('#modalModificarProducto').show();
@@ -105,6 +108,7 @@
             $('#eliminarTituloInput').val(btn.dataset.titulo);
             $('#eliminarDescripcionInput').val(btn.dataset.descripcion);
             $('#eliminarPrecioInput').val(btn.dataset.precio);
+            $('#eliminarStockInput').val(btn.dataset.stock);
             $('#eliminarFechaInput').val(btn.dataset.fecha);
 
             $('#modalEliminarProducto').show();

@@ -38,6 +38,10 @@
               Fecha de creación:
             </label>
             <input type="text" name="fecha" id="eliminarFechaInput" placeholder="Fecha" class="form-control" value="" disabled>
+            <label for="stock" class="label">
+              Stock:
+            </label>
+            <input type="number" name="stock" id="eliminarStockInput" placeholder="Stock" value="" class="form-control" disabled>
         </form>
       </div>
         <div class="modal-footer">

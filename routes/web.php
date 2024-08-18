@@ -6,6 +6,8 @@ use App\Http\Controllers\ViewController;
 use App\Http\Controllers\ProductController;
 use Illuminate\View\ViewException;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\PedidosController;
+use App\Models\Pedido;
 
 // Home
 Route::get('/', [ViewController::class, 'showHome'])->middleware('auth')->name('homepage');
@@ -37,5 +39,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/cart', [CartController::class, 'viewCart'])->name('cart-index');
     Route::post('/cart/save-pedido', [CartController::class, 'savePedido'])->name('cart-save-pedido');
 });
+
+// Pedidos
+Route::get('/pedidos', [PedidosController::class, 'showPedidos'])->middleware('auth')->name('viewPedidos');
+Route::match(['put', 'patch'], '/pedidos/{id}', [PedidosController::class, 'cambiarEstadoPedido'])->middleware('auth')->name('modificar-pedido');
 
 

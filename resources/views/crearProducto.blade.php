@@ -1,52 +1,50 @@
 @extends('layout.basicLayout')
 
 @section('title', 'Crear Producto')
+@section('navTitle', 'Crear Producto')
 
 @section('body')
-    <div class="container-fluid bg-primary text-dark">
-        <h1 class="pb-1">
-            Crear Producto
-        </h1>
-        <a href="{{ route('logout') }}" class="text-black">
-            Cerrar sesión
-        </a>
+<div class="container mt-5">
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <form action="{{ route('crearProducto') }}" method="POST" id="crearProductoForm">
+                @csrf
+
+                <div class="mb-3">
+                    <label for="codigo_producto" class="form-label">Código de Producto</label>
+                    <input type="text" name="codigo_producto" id="codigoProductoInput" placeholder="Ingrese su cód. de producto" class="form-control">
+                </div>
+
+                <div class="mb-3">
+                    <label for="titulo" class="form-label">Título</label>
+                    <input type="text" name="titulo" id="tituloInput" placeholder="Ingrese el título" class="form-control">
+                </div>
+
+                <div class="mb-3">
+                    <label for="descripcion" class="form-label">Descripción</label>
+                    <textarea name="descripcion" id="descripcionInput" placeholder="Ingrese la descripción" class="form-control" rows="3"></textarea>
+                </div>
+
+                <div class="mb-3">
+                    <label for="precio_unitario" class="form-label">Precio Unitario</label>
+                    <input type="number" step="0.01" name="precio_unitario" id="precioUnitarioInput" placeholder="Ingrese el precio unitario" class="form-control">
+                </div>
+
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary btn-lg">
+                        Crear Producto
+                    </button>
+                </div>
+            </form>
+        </div>
     </div>
+</div>
 
-    <form action="{{ route('crearProducto') }}" method="POST" id="crearProductoForm">
-        @method('POST')
-        @csrf
-
-        <label for="codigo_producto" class="label">
-            Ingrese el cód. de producto:
-        </label>
-        <input type="text" name="codigo_producto" id="codigoProductoInput" placeholder="Ingrese su cód. de producto" class="form-control m-1">
-
-        
-        <label for="titulo" class="label">
-            Ingrese el titulo:
-        </label>
-        <input type="text" name="titulo" id="tituloInput" placeholder="Ingrese el titulo" class="form-control m-1">
-
-        
-        <label for="descripcion" class="label">
-            Ingrese el descripcion:
-        </label>
-        <input type="text" name="descripcion" id="descripcionInput" placeholder="Ingrese la descripcion" class="form-control m-1">
-
-        <label for="precio_unitario" class="label">
-            Ingrese el precio unitario:
-        </label>
-        <input type="number" step="0.01" name="precio_unitario" id="precioUnitarioInput" placeholder="Ingrese el precio unitario" class="form-control m-1">
-    
-        <button onclick="submitCrearProductoForm()" class="btn btn-primary m-2">
-            Crear
-        </button>
-    </form>
-
-    <script>
-        function submitCrearProductoForm() {
-            const crearProductoForm = document.querySelector('#crearProductoForm');
-            crearProductoForm.submit();
-        }
-    </script>
+<script>
+    function submitCrearProductoForm() {
+        const crearProductoForm = document.querySelector('#crearProductoForm');
+        crearProductoForm.submit();
+    }
+</script>
 @endsection
