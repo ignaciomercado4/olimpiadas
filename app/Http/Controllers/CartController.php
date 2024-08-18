@@ -5,6 +5,7 @@ use App\Models\Cart;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Pedido;
 
 class CartController extends Controller
 {
@@ -49,6 +50,36 @@ class CartController extends Controller
         $cartItems = Cart::where('user_id', $user->id)->get();
 
         return view('indexCarrito', compact('cartItems'));
+    }
+
+    public function savePedido(Request $request) {
+        $user = Auth::user();
+        $cartItems = Cart::where('user_id', $user->id)->get();
+
+        if ($cartItems->isEmpty()) {
+            return redirect()->back()->with('error', 'No tienes productos en tu carrito.');
+        }
+
+        $total = $cartItems->sum(function($cartItem) {
+            return $cartItem->product->precio_unitario * $cartItem->quantity;
+        });
+
+        // crear el pedido
+        $pedido = Pedido::create([
+            'user_id' => $user->id,
+            'total' => $total,
+            'estado' => 'pendiente',
+        ]);
+
+        // asignar los productos al pedido
+        foreach ($cartItems as $cartItem) {
+            $pedido->products()->attach($cartItem->product_id, ['quantity' => $cartItem->quantity]);
+        }
+
+        // vaciar el carrito después de guardar el pedido
+        Cart::where('user_id', $user->id)->delete();
+
+        return redirect()->route('cart-index')->with('success', 'Pedido guardado exitosamente.');
     }
 
 }

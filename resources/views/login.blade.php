@@ -1,13 +1,10 @@
 @extends('layout.basicLayout')
 
 @section('title', 'Login')
+@section('navTitle', 'Login')
+
 
 @section('body')
-    <div class="container-fluid bg-primary text-dark">
-        <h1 class="pb-1">
-            Login
-        </h1>
-    </div>
 
     <form action="{{ route('inicia-sesion') }}" method="POST" id="loginForm">
         @method('POST')

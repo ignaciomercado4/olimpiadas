@@ -3,6 +3,9 @@
 @include('components.layoutHtmlHead')
 <body>
 
+    {{-- nav --}}
+    @include('components.layoutHtmlNav')
+
     {{-- main container --}}
     <div>
         @yield('body')

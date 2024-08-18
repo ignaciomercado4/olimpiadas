@@ -35,6 +35,7 @@ Route::delete( '/admin/eliminarProducto/{id}', [ProductController::class, 'delet
 Route::middleware(['auth'])->group(function () {
     Route::post('/cart/add/{productId}', [CartController::class, 'addToCart'])->name('cart-add');
     Route::get('/cart', [CartController::class, 'viewCart'])->name('cart-index');
+    Route::post('/cart/save-pedido', [CartController::class, 'savePedido'])->name('cart-save-pedido');
 });
 
 

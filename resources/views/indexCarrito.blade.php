@@ -1,8 +1,9 @@
 @extends('layout.basicLayout')
 
+@section('navTitle', 'Carrito de compras')
+
 @section('body')
 <div class="container">
-    <h1>Carrito de Compras</h1>
     @if(session('success'))
         <div class="alert alert-success">{{ session('success') }}</div>
     @endif
@@ -32,6 +33,11 @@
                 @endforeach
             </tbody>
         </table>
+
+        <form action="{{ route('cart-save-pedido') }}" method="POST">
+            @csrf
+            <button type="submit" class="btn btn-success">Guardar Pedido</button>
+        </form>
     @else
         <p>No tienes productos en tu carrito.</p>
     @endif
