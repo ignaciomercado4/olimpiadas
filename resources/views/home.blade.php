@@ -5,7 +5,7 @@
 
 @section('body') 
 
-@if (Auth::user()->isAdmin == 0)
+@if (Auth::user()->isAdmin == 1)
 
     <div class="container mt-4">
         <div class="row text-center">

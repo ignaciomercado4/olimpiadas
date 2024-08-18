@@ -17,5 +17,7 @@ class PedidosController extends Controller
         
         $pedidoAEditar = Pedido::findOrFail($id);
         $pedidoAEditar->update(request()->all());
+        
+        return redirect()->back()->with('success', 'El estado del pedido se ha actualizado correctamente.');
     }
 }

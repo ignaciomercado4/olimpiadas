@@ -10,11 +10,13 @@
                     ¡Si cambias el estado del pedido a entregado, se tomará como venta realizada!
                 </p>
                 <!-- contenido del modal para cambiar el estado del pedido -->
-                <form action="" id="formModificarPedido">
-                    <label for="estado">
+                <form action="" id="formModificarPedido" method="POST">
+                    @csrf
+                    @method('put')
+                    <label for="estado" class="label">
                         Estado del pedido:
                     </label>
-                    <select name="estado" id="inputModificarEstado">
+                    <select name="estado" id="inputModificarEstado" class="form-control">
                         <option value="pendiente">Pendiente</option>
                         <option value="entregado">Entregado</option>
                     </select>
@@ -44,7 +46,7 @@
 
 <script>
     function submitFormModificarPedido() {
-        let actionCorrecto = window.location.protocol + "//" + window.location.host + "/producto/" + btn.dataset.id;
-            $('#formModificarPedido').attr('action', actionCorrecto);
+        
+        $('#formModificarPedido').submit();
     }
 </script>

@@ -24,14 +24,14 @@ Route::post('/inicia-sesion', [RegisterController::class, 'login'])->name('inici
 Route::get('/logout', [RegisterController::class, 'logout'])->name('logout');
 
 // Ver productos existentes
-Route::get('/admin/productosExistentes', [ProductController::class, 'showProductosExistentes'])->middleware('auth')->name('productosExistentes');
+Route::get('/productosExistentes', [ProductController::class, 'showProductosExistentes'])->middleware('auth')->name('productosExistentes');
 
 // CRUD productos
-Route::get('/admin/formCrearProducto', [ViewController::class, 'showFormCrearProducto'])->middleware('auth')->name('viewFormCrearProducto');
-Route::post('/admin/crearProducto', [ProductController::class, 'create'])->middleware('auth')->name('crearProducto');
-Route::get('/admin/crearProducto/success', [ViewController::class, 'showProductoCreadoExitosamente'])->middleware('auth')->name('productoCreadoExitosamente');
-Route::match(['put', 'patch'], '/admin/modificarProducto/{id}', [ProductController::class, 'modify'])->middleware('auth')->name('modificarProducto');
-Route::delete( '/admin/eliminarProducto/{id}', [ProductController::class, 'delete'])->middleware('auth')->name('eliminarProducto');
+Route::get('/formCrearProducto', [ViewController::class, 'showFormCrearProducto'])->middleware('auth')->name('viewFormCrearProducto');
+Route::post('/crearProducto', [ProductController::class, 'create'])->middleware('auth')->name('crearProducto');
+Route::get('/crearProducto/success', [ViewController::class, 'showProductoCreadoExitosamente'])->middleware('auth')->name('productoCreadoExitosamente');
+Route::match(['put', 'patch'], '/modificarProducto/{id}', [ProductController::class, 'modify'])->middleware('auth')->name('modificarProducto');
+Route::delete( '/eliminarProducto/{id}', [ProductController::class, 'delete'])->middleware('auth')->name('eliminarProducto');
 
 // Carrito de compras
 Route::middleware(['auth'])->group(function () {
