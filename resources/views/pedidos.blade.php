@@ -4,6 +4,9 @@
 @section('navTitle', 'Pedidos Existentes')
 
 @section('body')
+
+@if (Auth::user()->isAdmin == 1)
+    
 <div class="container mt-5">
     <div class="card shadow-sm">
         <div class="card-body">
@@ -78,5 +81,8 @@
         $('#formModificarPedido').attr('action', actionCorrecto);
     }
 </script>
+@else
+    @include('components.usuarioNoAutorizado')
+@endif
 
 @endsection

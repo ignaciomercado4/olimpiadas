@@ -84,7 +84,7 @@
 
     <script>
         function mostrarModalModificar(btn) {
-            let actionCorrecto = window.location.protocol + "//" + window.location.host + "/admin/modificarProducto/" + btn.dataset.id;
+            let actionCorrecto = window.location.protocol + "//" + window.location.host + "/modificarProducto/" + btn.dataset.id;
             $('#formModificarProducto').attr('action', actionCorrecto);
 
             $('#modificarIDInput').val(btn.dataset.id);
@@ -100,7 +100,7 @@
 
         
         function mostrarModalEliminar(btn) {
-            let actionCorrecto = window.location.protocol + "//" + window.location.host + "/admin/eliminarProducto/" + btn.dataset.id;
+            let actionCorrecto = window.location.protocol + "//" + window.location.host + "/eliminarProducto/" + btn.dataset.id;
             $('#formEliminarProducto').attr('action', actionCorrecto);
 
             $('#eliminarIDInput').val(btn.dataset.id);

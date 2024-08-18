@@ -4,6 +4,8 @@
 @section('navTitle', 'Crear Producto')
 
 @section('body')
+@if (Auth::user()->isAdmin == 1)
+    
 <div class="container mt-5">
 
     <div class="card shadow-sm">
@@ -47,4 +49,7 @@
         crearProductoForm.submit();
     }
 </script>
+@else
+    @include('components.usuarioNoAutorizado')
+@endif
 @endsection
