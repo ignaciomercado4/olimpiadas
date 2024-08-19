@@ -11,9 +11,11 @@
             </a>
 
             <!-- Botón para volver al inicio -->
+            @auth
             <a href="{{ url('/') }}" class="btn btn-outline-light me-2">
                 Inicio
             </a>
+            @endauth
 
             <h1 class="h4 mb-0">
                 @yield('navTitle')

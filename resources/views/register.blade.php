@@ -1,47 +1,54 @@
 @extends('layout.basicLayout')
 
 @section('title', 'Registro')
+@section('navTitle', 'Registro')
 
 @section('body')
-    <div class="container-fluid bg-primary text-dark">
-        <h1 class="pb-1">
-            Registro
-        </h1>
+
+    <div class="pt-4 d-flex justify-content-center">
+        <div class="card shadow p-4 m-3" style="width: 400px; border-radius: 15px;">
+            <form action="{{ route('validar-registro') }}" method="POST" id="registerForm">
+                @method('post')
+                @csrf
+
+                <div class="form-group">
+                    <label for="email" class="label">
+                        Ingrese su email:
+                    </label>
+                    <input type="email" name="email" id="emailInput" placeholder="Ingrese su email" class="form-control m-1">
+                </div>
+
+                <div class="form-group">
+                    <label for="name" class="label">
+                        Ingrese su nombre de usuario:
+                    </label>
+                    <input type="text" name="name" id="nameInput" placeholder="Ingrese su nombre de usuario" class="form-control m-1">
+                </div>
+
+                <div class="form-group">
+                    <label for="password" class="label">
+                        Ingrese su contraseña:
+                    </label>
+                    <input type="password" name="password" id="passwordInput" placeholder="Ingrese su contraseña" class="form-control m-1">
+                </div>
+
+                <p class="text-danger" id="textoError">
+                    {{-- texto de error --}}
+                </p>
+
+                <button type="button" onclick="submitRegisterForm()" class=" justify-content-center d-flex btn btn-primary btn-block m-2">
+                    Ingresar
+                </button>
+            </form>
+
+            <p class="mt-3">
+                ¿Ya te registraste? hacé click
+                <a href="{{ route('viewLogin') }}">
+                    acá.
+                </a>
+            </p>
+        </div>
     </div>
-
-    <form action="{{ route('validar-registro') }}" method="POST" id="registerForm">
-        @method('post')
-        @csrf
-
-        <label for="email" class="label">
-            Ingrese su email:
-        </label>
-        <input type="email" name="email" id="emailInput" placeholder="Ingrese su email" class="form-control m-1">
-
-        <label for="name" class="label">
-            Ingrese su nombre de usuario:
-        </label>
-        <input type="text" name="name" id="nameInput" placeholder="Ingrese su nombre de usuario" class="form-control m-1">
-
-        <label for="password" class="label">
-            Ingrese su contraseña:
-        </label>
-        <input type="password" name="password" id="passwordInput" placeholder="Ingrese su contraseña" class="form-control m-1">
-        <p class="text-danger" id="textoError">
-            {{-- texto de error --}}
-        </p>
-    </form>
-    
-    <button onclick="submitRegisterForm()" class="btn btn-primary m-2">
-        Ingresar
-    </button>
-
-    <p>
-        ¿Ya te registraste? hacé click 
-        <a href="{{ route('viewLogin') }}">
-            acá.
-        </a>
-    </p>
 
     <script type="text/javascript">
         function submitRegisterForm() {
@@ -59,4 +66,11 @@
             }
         }
     </script>
+
+    <style>
+        .container {
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+    </style>
 @endsection
+
