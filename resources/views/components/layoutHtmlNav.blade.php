@@ -2,15 +2,15 @@
     use Illuminate\Support\Facades\Auth;
     use App\Models\Cart;
 
-    if (Auth::user()->isAdmin == 0 && !request()->routeIs('cart-index')) {
-        $cartItems = Cart::where('user_id', Auth::user()->id)->get();
-        $cartItemAmount = 0;
+    $cartItemAmount = 0;
 
-        for ($i = 0; $i < sizeof($cartItems); $i++) {
-            $cartItemAmount += $cartItems[$i]->quantity; 
+    if (Auth::check() && Auth::user()->isAdmin == 0 && !request()->routeIs('cart-index')) {
+        $cartItems = Cart::where('user_id', Auth::user()->id)->get();
+
+        foreach ($cartItems as $item) {
+            $cartItemAmount += $item->quantity;
         }
     }
-
 @endphp
 
 <div class="container-fluid bg-primary text-white py-3">
@@ -23,14 +23,17 @@
 
             <!-- Botón para volver al inicio -->
             @auth
-            <a href="{{ url('/') }}" class="btn btn-outline-light me-2">
-                Inicio
+            <a href="{{ url('/') }}" class="me-2 text-light d-flex align-items-center" style="text-decoration: none;">
+                <img src="{{ asset('/img/logo.png') }}" alt="Inicio" style="width: 50px; height: 50px;">
+                <span class="ms-2" style="font-family: 'system-ui', sans-serif; font-weight: bold; font-size: 1.5rem; color: #f8f9fa;">
+                    QualiSports
+                </span>
             </a>
-            @endauth
+            @endauth    
 
-            <h1 class="h4 mb-0">
-                @yield('navTitle')
-            </h1>
+            <h4 class="mb-0">
+                 - @yield('navTitle')
+            </h4>
         </div>
 
         <div>
@@ -49,7 +52,7 @@
                     Cerrar Sesión
                 </a>
             
-                @endauth
+            @endauth
         </div>
     </div>
 </div>

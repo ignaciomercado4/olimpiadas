@@ -1,4 +1,3 @@
-
 @extends('layout.basicLayout')
 
 @section('title', 'Productos existentes')
@@ -13,8 +12,8 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">{{ $producto->titulo }}</h5>
-                        <p class="card-text">
-                            {{ $producto->descripcion }}
+                        <p class="card-text" style="font-size: 12px; opacity: 0.8;">
+                            {{ \Illuminate\Support\Str::limit($producto->descripcion, 100, '...') }}
                         </p>
                         <p class="card-text">
                             <strong>Precio:</strong> ${{ $producto->precio_unitario }}

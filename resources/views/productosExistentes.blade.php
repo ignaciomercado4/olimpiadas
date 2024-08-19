@@ -1,4 +1,4 @@
-@if (Auth::user()->isAdmin == 1)
+@if (Auth::user()->isAdmin == 0)
 
     @include('productosExistentesAdmin')    
 @else

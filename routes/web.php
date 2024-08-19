@@ -6,6 +6,7 @@ use App\Http\Controllers\ViewController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\PedidosController;
+use App\Http\Controllers\UserController;
 
 // Rutas sin autenticación
 Route::get('/register', [ViewController::class, 'showRegister'])->name('viewRegister');
@@ -40,6 +41,9 @@ Route::middleware(['auth'])->group(function () {
     // Pedidos
     Route::get('/pedidos', [PedidosController::class, 'showPedidos'])->name('viewPedidos');
     Route::match(['put', 'patch'], '/pedidos/{id}', [PedidosController::class, 'cambiarEstadoPedido'])->name('modificar-pedido');
-    
+
+    // Gestion usuarios
+    Route::get('/usuarios', [UserController::class, 'showUsers'])->name('gestion-usuarios');
+    Route::match(['put', 'patch'], '/modificarUsuario/{id}', [UserController::class, 'modify'])->name('modificar-usuario'); 
 });
 ?>

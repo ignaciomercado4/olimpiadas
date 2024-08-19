@@ -5,7 +5,7 @@
 
 @section('body') 
 
-@if (Auth::user()->isAdmin == 0)
+@if (Auth::user()->isAdmin == 1)
 
     <div class="container mt-4">
         <div class="row text-center">
@@ -55,7 +55,7 @@
 
             <!-- Crear Producto -->
             <div class="col-md-4">
-                <a href="" class="card-link">
+                <a href="{{ route('gestion-usuarios') }}" class="card-link">
                     <div class="card border-primary">
                         <div class="card-body">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-4" style="width: 60px; height: 60px;">
