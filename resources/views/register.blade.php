@@ -26,6 +26,13 @@
                 </div>
 
                 <div class="form-group">
+                    <label for="direccion" class="label">
+                        Ingrese su direccion:
+                    </label>
+                    <input type="text" name="direccion" id="direccionInput" placeholder="Ingrese su dirección" class="form-control m-1">
+                </div>
+
+                <div class="form-group">
                     <label for="password" class="label">
                         Ingrese su contraseña:
                     </label>

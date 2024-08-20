@@ -23,6 +23,13 @@
                         </label>
                         <input type="email" id="modificarEmailInput" class="form-control" name="email">
                     </div>
+
+                    <div class="mb-3">
+                        <label for="modificarDireccionInput" class="form-label">
+                            Dirección
+                        </label>
+                        <input type="text" id="modificarDireccionInput" class="form-control" name="direccion">
+                    </div>
                     
                     <div class="mb-3">
                         <p class="text-danger">

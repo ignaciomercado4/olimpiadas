@@ -72,6 +72,8 @@ class CartController extends Controller
         $pedido = Pedido::create([
             'user_id' => $user->id,
             'total' => $total,
+            'comprador' => $user->email,
+            'direccion' => $user->direccion,
             'estado' => 'pendiente',
         ]);
     

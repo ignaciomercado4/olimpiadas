@@ -19,6 +19,7 @@
                                 <th>Nombre</th>
                                 <th>Email</th>
                                 <th>Fecha de Creación</th>
+                                <th>Dirección</th>
                                 <th>Es administrador:</th>
                                 <th>Acciones</th>
                             </tr>
@@ -30,6 +31,7 @@
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->email }}</td>
                                     <td>{{ date('d/m/Y', strtotime($user->created_at)) }}</td>
+                                    <td>{{ $user->direccion }}</td>
                                     <td>
                                         @if ($user->isAdmin)
                                             Si
@@ -45,6 +47,7 @@
                                             data-id="{{ $user->id }}"
                                             data-name="{{ $user->name }}"
                                             data-email="{{ $user->email }}"
+                                            data-direccion="{{ $user->direccion }}"
                                             data-admin="{{ $user->isAdmin }}"
                                             onclick="mostrarModalModificarUsuario(this)">
                                             Modificar
@@ -77,6 +80,7 @@
         $('#formModificarUsuario').attr('action', actionCorrecto);
 
         $('#modificarNombreInput').val(btn.dataset.name);
+        $('#modificarDireccionInput').val(btn.dataset.direccion);
         $('#modificarEmailInput').val(btn.dataset.email);
         $('#modificarAdminInput').val(btn.dataset.email);
 
