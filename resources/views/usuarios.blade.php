@@ -30,7 +30,13 @@
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->email }}</td>
                                     <td>{{ date('d/m/Y', strtotime($user->created_at)) }}</td>
-                                    <td>{{ $user->isAdmin }}</td>
+                                    <td>
+                                        @if ($user->isAdmin)
+                                            Si
+                                        @else
+                                            No
+                                        @endif
+                                    </td>
                                     <td>
                                         <button 
                                             class="btn btn-primary btn-sm m-1" 

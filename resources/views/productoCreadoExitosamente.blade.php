@@ -13,10 +13,10 @@
             <p class="mt-3">¿Qué deseas hacer ahora?</p>
             
             <div class="d-grid gap-2 d-md-flex justify-content-md-center mt-4">
-                <button onclick="window.location.href = '{{ url('/admin/formCrearProducto') }}'" class="btn btn-outline-primary btn-lg me-2">
+                <button onclick="window.location.href = '{{ url('/formCrearProducto') }}'" class="btn btn-outline-primary btn-lg me-2">
                     Crear un nuevo producto
                 </button>
-                <button onclick="window.location.href = '{{ url('/admin/productosExistentes') }}'" class="btn btn-outline-secondary btn-lg">
+                <button onclick="window.location.href = '{{ url('/productosExistentes') }}'" class="btn btn-outline-secondary btn-lg">
                     Ver productos existentes
                 </button>
             </div>

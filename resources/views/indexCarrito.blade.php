@@ -41,15 +41,20 @@
 
                         @foreach($cartItems as $item)
                             @php
-                                $totalFinalCarrito += $item->product->precio_unitario * $item->quantity
+                                $precioUnitario = floatval($item->product->precio_unitario);
+                                $cantidad = intval($item->quantity);
+
+                                if (is_numeric($precioUnitario) && is_numeric($cantidad)) {
+                                    $totalFinalCarrito += $precioUnitario * $cantidad;
+                                }
                             @endphp
                         
                             <tr>
                                 <td>{{ $item->product->titulo }}</td>
                                 <td>{{ $item->product->codigo_producto }}</td>
-                                <td>{{ $item->quantity }}</td>
-                                <td>{{ $item->product->precio_unitario }} $</td>
-                                <td>{{ $item->product->precio_unitario * $item->quantity }} $</td>
+                                <td>{{ $cantidad }}</td>
+                                <td>{{ $precioUnitario }} $</td>
+                                <td>{{ $precioUnitario * $cantidad }} $</td>
                             </tr>
                         @endforeach
                     </tbody>
