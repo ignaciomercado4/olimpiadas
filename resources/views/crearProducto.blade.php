@@ -10,7 +10,7 @@
 
     <div class="card shadow-sm">
         <div class="card-body">
-            <form action="{{ route('crearProducto') }}" method="POST" id="crearProductoForm">
+            <form action="{{ route('crearProducto') }}" method="POST" id="crearProductoForm" enctype="multipart/form-data">
                 @csrf
 
                 <div class="mb-3">
@@ -33,6 +33,13 @@
                     <input type="number" step="0.01" name="precio_unitario" id="precioUnitarioInput" placeholder="Ingrese el precio unitario" class="form-control">
                 </div>
 
+                <!-- Nuevo campo para la imagen -->
+                <div class="mb-3">
+                    <label for="imagen" class="form-label">Imagen del Producto</label>
+                    <p>Se recomienda que la imagen sea tenga una relacion de aspecto de 1:1</p>
+                    <input type="file" name="imagen" id="imagenInput" class="form-control">
+                </div>
+
                 <div class="text-center">
                     <button type="submit" class="btn btn-primary btn-lg">
                         Crear Producto
@@ -52,4 +59,5 @@
 @else
     @include('components.usuarioNoAutorizado')
 @endif
+
 @endsection

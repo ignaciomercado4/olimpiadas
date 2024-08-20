@@ -1,34 +1,40 @@
 @extends('layout.basicLayout')
 
-@section('title', 'Productos existentes')
+@section('title', 'Productos Existentes')
 @section('navTitle', 'Productos Existentes')
 
 @section('body')
-
-<div class="container mt-4">
+<div class="container mt-5">
     <div class="row">
         @foreach ($productosExistentes as $producto)
-            <div class="col-md-4 mb-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ $producto->titulo }}</h5>
-                        <p class="card-text" style="font-size: 12px; opacity: 0.8;">
-                            {{ \Illuminate\Support\Str::limit($producto->descripcion, 100, '...') }}
-                        </p>
-                        <p class="card-text">
-                            <strong>Precio:</strong> ${{ $producto->precio_unitario }}
-                        </p>
-                        <p class="card-text">
-                            <strong>Stock:</strong> {{ $producto->stock }}
-                        </p>
-                        <form action="{{ route('cart-add', $producto->id) }}" method="POST">
-                            @csrf
-                            <button type="submit" class="btn btn-primary">Agregar al Carrito</button>
-                        </form>
-                    </div>
+        <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+                <!-- Mostrar la imagen del producto -->
+                @if($producto->imagen)
+                <img src="{{ asset('/' . $producto->imagen) }}" class="card-img-top product-image" alt="{{ $producto->titulo }}">
+                @else
+                <img src="https://via.placeholder.com/150" class="card-img-top product-image" alt="Imagen no disponible">
+                @endif
+
+                <div class="card-body">
+                    <h5 class="card-title">{{ $producto->titulo }}</h5>
+                    <p class="card-text">{{ Str::limit($producto->descripcion, 100) }}</p>
+                    <p class="card-text"><strong>Precio:</strong> ${{ $producto->precio_unitario }}</p>
+                    <p class="card-text"><strong>Stock:</strong> {{ $producto->stock }}</p>
+                    <a href="#" class="btn btn-primary">Ver detalles</a>
                 </div>
             </div>
+        </div>
         @endforeach
     </div>
 </div>
+
+<style>
+    .product-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+</style>
 @endsection
