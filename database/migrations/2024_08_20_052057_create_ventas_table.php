@@ -19,7 +19,6 @@ return new class extends Migration
             $table->unsignedBigInteger('numero_pedido');
             $table->string('direccion');
 
-            // Foreign key constraint
             $table->foreign('numero_pedido')->references('id')->on('pedidos')->onDelete('cascade');
         });
     }

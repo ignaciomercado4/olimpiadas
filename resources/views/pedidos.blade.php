@@ -34,9 +34,11 @@
                             <tr>
                                 <th>ID del Pedido</th>
                                 <th>ID Usuario</th>
+                                <th>Comprador</th>
                                 <th>Total ($)</th>
                                 <th>Estado</th>
                                 <th>Fecha</th>
+                                <th>Dirección del comprador</th>
                                 <th>Acciones</th>
                             </tr>
                         </thead>
@@ -45,9 +47,19 @@
                                 <tr>
                                     <td>{{ $pedido->id }}</td>
                                     <td>{{ $pedido->user_id }}</td>
+                                    <td>{{ $pedido->comprador }}</td>
                                     <td>{{ number_format($pedido->total, 2) }} $</td>
-                                    <td>{{ ucfirst($pedido->estado) }}</td>
+                                    @if ($pedido->estado == "entregado")
+                                        <td class="bg-succes">
+                                            {{ ucfirst($pedido->estado) }}
+                                        </td>
+                                    @else
+                                        <td class="bg-warning">
+                                            {{ ucfirst($pedido->estado) }}
+                                        </td>
+                                    @endif
                                     <td>{{ date('d/m/Y', strtotime($pedido->created_at)) }}</td>
+                                    <td>{{ $pedido->direccion }}</td>
                                     <td>
                                         <button 
                                             data-bs-toggle="modal" 

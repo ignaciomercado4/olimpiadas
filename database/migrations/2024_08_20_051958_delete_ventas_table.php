@@ -11,6 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
+        Schema::dropIfExists('ventas');
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
         Schema::create('ventas', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
@@ -19,16 +27,7 @@ return new class extends Migration
             $table->unsignedBigInteger('numero_pedido');
             $table->string('direccion');
 
-            // Foreign key constraint
             $table->foreign('numero_pedido')->references('id')->on('pedidos')->onDelete('cascade');
         });
-    }
-
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
-    {
-        Schema::dropIfExists('ventas');
     }
 };

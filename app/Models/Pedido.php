@@ -9,7 +9,7 @@ class Pedido extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'total', 'estado'];
+    protected $fillable = ['user_id', 'total', 'estado', 'comprador'];
 
     public function products()
     {
@@ -19,5 +19,10 @@ class Pedido extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function ventas()
+    {
+        return $this->hasOne(Venta::class, 'id_pedido');
     }
 }
