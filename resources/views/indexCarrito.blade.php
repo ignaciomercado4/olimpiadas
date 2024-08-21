@@ -32,7 +32,7 @@
                             <th>Cantidad</th>
                             <th>Precio Unitario</th>
                             <th>Total</th>
-                            <th>Eliminar</th>
+                            <th>Eliminar del carrito</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -63,7 +63,7 @@
                                     data-bs-target="#modalEliminarProductoCarrito"
                                     data-id="{{ $item->id }}"
                                     onclick="showModalEliminarProductoCarrito(this)">
-                                        Eliminar del carrito
+                                        Eliminar
                                     </button>
                                 </td>
                             </tr>
