@@ -41,6 +41,7 @@
         // Pedidos
         Route::get('/pedidos', [PedidosController::class, 'showPedidos'])->name('viewPedidos');
         Route::match(['put', 'patch'], '/pedidos/{id}', [PedidosController::class, 'cambiarEstadoPedido'])->name('modificar-pedido');
+        Route::delete('/eliminarPedido/{id}', [PedidosController::class, 'delete'])->name('eliminar-pedido');
 
         // Gestion usuarios
         Route::get('/usuarios', [UserController::class, 'showUsers'])->name('gestion-usuarios');

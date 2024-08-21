@@ -35,8 +35,10 @@
 
                 <!-- Nuevo campo para la imagen -->
                 <div class="mb-3">
-                    <label for="imagen" class="form-label">Imagen del Producto</label>
-                    <p>Se recomienda que la imagen sea tenga una relacion de aspecto de 1:1</p>
+                    <label for="imagen" class="form-label">Imagen del Producto (acepta archivos .png, .jpg y .jpeg)</label>
+                    <p>
+                        Se recomienda que la imagen sea tenga una relacion de aspecto de 1:1.
+                    </p>
                     <input type="file" name="imagen" id="imagenInput" class="form-control">
                 </div>
 

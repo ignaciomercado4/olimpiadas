@@ -4,9 +4,11 @@
 @section('navTitle', 'Registro')
 
 @section('body')
-
     <div class="pt-4 d-flex justify-content-center">
         <div class="card shadow p-4 m-3" style="width: 400px; border-radius: 15px;">
+            <h1 class="text-center mb-5">
+                Registro
+            </h1>
             <form action="{{ route('validar-registro') }}" method="POST" id="registerForm">
                 @method('post')
                 @csrf
@@ -43,12 +45,15 @@
                     {{-- texto de error --}}
                 </p>
 
-                <button type="button" onclick="submitRegisterForm()" class=" justify-content-center d-flex btn btn-primary btn-block m-2">
-                    Ingresar
-                </button>
+                <!-- Centrar el botón -->
+                <div class="d-flex justify-content-center">
+                    <button type="button" onclick="submitRegisterForm()" class="btn btn-primary m-2">
+                        Ingresar
+                    </button>
+                </div>
             </form>
 
-            <p class="mt-3">
+            <p class="mt-3 text-center">
                 ¿Ya te registraste? hacé click
                 <a href="{{ route('viewLogin') }}">
                     acá.
@@ -80,4 +85,3 @@
         }
     </style>
 @endsection
-

@@ -1,6 +1,8 @@
 
 <div style="font-size: 14px">
-    <table class="table-bordered" id="elementoPDF">
+    <table class="table-bordered" id="elementoPDF" style="background-color: white; box-shadow: 1px -2px 43px 0px rgba(255,255,255,0.75);
+-webkit-box-shadow: 1px -2px 43px 0px rgba(255,255,255,0.75);
+-moz-box-shadow: 1px -2px 43px 0px rgba(255,255,255,0.75);">
         <tr class="text-center">
             <th>
                 ID

@@ -18,7 +18,7 @@ class PedidosController extends Controller
         $nuevoEstado = $request->input('estado');
         $pedidoAEditar->update(['estado' => $nuevoEstado]);
 
-        // Solo guardar en ventas si el nuevo estado es 'entregado'
+        // solo guardar en ventas si el nuevo estado es 'entregado'
         if ($nuevoEstado === 'entregado') {
             Venta::create([
                 'total' => $pedidoAEditar->total,
@@ -29,5 +29,12 @@ class PedidosController extends Controller
         }
 
         return redirect()->back()->with('success', 'El estado del pedido se ha actualizado correctamente.');
+    }
+
+    public function delete($id) {
+        $pedidoAEliminar = Pedido::findOrFail($id);
+        $pedidoAEliminar->delete();
+
+        return redirect()->back()->with('success', 'El pedido se ha eliminado correctamente.');
     }
 }

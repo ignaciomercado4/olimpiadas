@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 @include('components.layoutHtmlHead')
-<body>
+<body style="background-color: #8acdef">
 
     {{-- nav --}}
     @include('components.layoutHtmlNav')

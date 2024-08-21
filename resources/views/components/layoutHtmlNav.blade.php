@@ -13,29 +13,42 @@
     }
 @endphp
 
-<div class="container-fluid bg-primary text-white py-3">
+<div class="container-fluid text-white py-3" style="background-color: #3d8db5;">
     <div class="d-flex justify-content-between align-items-center">
         <div class="d-flex align-items-center">
             <!-- Botón para volver atrás -->
-            <a href="{{ url()->previous() }}" class="btn btn-outline-light me-2">
-                <- Atrás
-            </a>
+            @auth
+                <a href="{{ url()->previous() }}" class="btn btn-outline-light me-2">
+                    <- Atrás
+                </a>
+            @endauth
 
             <!-- Botón para volver al inicio -->
-            @auth
-            <a href="{{ url('/') }}" class="me-2 text-light d-flex align-items-center" style="text-decoration: none;">
-                <img src="{{ asset('/img/logo.png') }}" alt="Inicio" style="width: 50px; height: 50px;">
-                <span class="ms-2" style="font-family: 'system-ui', sans-serif; font-weight: bold; font-size: 1.5rem; color: #0a3662;">
-                    Paraná
-                </span>
-                <span class="ms-2" style="font-family: 'system-ui', sans-serif; font-weight: bold; font-size: 1.5rem; color: #7e1313;">
-                    Sports
-                </span>
-            </a>
-            @endauth    
+            @if (Auth::user())
+                <a href="{{ url('/') }}" class="me-2 text-light d-flex align-items-center" style="text-decoration: none;">
+                    <img src="{{ asset('/img/logo.png') }}" alt="Inicio" style="width: 50px; height: 50px;">
+                    <span class="ms-2" style="font-family: 'system-ui', sans-serif; font-weight: bold; font-size: 1.5rem; color: #0a3662;">
+                        Paraná
+                    </span>
+                    <span class="ms-2" style="font-family: 'system-ui', sans-serif; font-weight: bold; font-size: 1.5rem; color: #7e1313;">
+                        Sports
+                    </span>
+                </a>
+            @else
+                <a href="#" class="me-2 text-light d-flex align-items-center" style="text-decoration: none;">
+                    <img src="{{ asset('/img/logo.png') }}" alt="Inicio" style="width: 50px; height: 50px;">
+                    <span class="ms-2" style="font-family: 'system-ui', sans-serif; font-weight: bold; font-size: 1.5rem; color: #00293D;">
+                        Paraná
+                    </span>
+                    <span class="ms-2" style="font-family: 'system-ui', sans-serif; font-weight: bold; font-size: 1.5rem; color: ##C7330D;">
+                        Sports
+                    </span>
+                </a>
+            @endif
 
             <h4 class="mb-0">
-                 - @yield('navTitle')
+                 -    
+                @yield('navTitle')
             </h4>
         </div>
 

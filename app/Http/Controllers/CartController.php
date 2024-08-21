@@ -61,10 +61,8 @@ class CartController extends Controller
         }
     
         $total = $cartItems->sum(function($cartItem) {
-            // aseguramos que el precio unitario y la cantidad sean numéricos
             $precioUnitario = floatval($cartItem->product->precio_unitario);
             $cantidad = intval($cartItem->quantity);
-    
             return $precioUnitario * $cantidad;
         });
     
@@ -77,8 +75,15 @@ class CartController extends Controller
             'estado' => 'pendiente',
         ]);
     
-        // asignar los productos al pedido
+        // asignar los productos al pedido y reducir el stock
         foreach ($cartItems as $cartItem) {
+            
+            // reducir el stock del producto
+            $product = Product::find($cartItem->product_id);
+            $product->stock -= $cartItem->quantity;
+            $product->save();
+    
+            // asociar el producto al pedido con la cantidad correspondiente
             $pedido->products()->attach($cartItem->product_id, ['quantity' => $cartItem->quantity]);
         }
     
@@ -87,6 +92,4 @@ class CartController extends Controller
     
         return redirect()->route('cart-index')->with('success', 'Pedido guardado exitosamente.');
     }
-    
-
 }

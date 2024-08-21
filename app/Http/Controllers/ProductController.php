@@ -12,12 +12,12 @@ class ProductController extends Controller
             'titulo' => 'required',
             'descripcion' => 'required',
             'precio_unitario' => 'required|numeric',
-            'imagen' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048' // Validación de imagen
+            'imagen' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048' // validación de imagen
         ]);
 
         $productData = $request->all();
 
-        // Manejo de la imagen
+        // manejo de la imagen
         if ($request->hasFile('imagen')) {
             $imageName = time().'.'.$request->imagen->extension();  
             $request->imagen->move(public_path('images'), $imageName);

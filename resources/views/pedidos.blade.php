@@ -50,11 +50,11 @@
                                     <td>{{ $pedido->comprador }}</td>
                                     <td>{{ number_format($pedido->total, 2) }} $</td>
                                     @if ($pedido->estado == "entregado")
-                                        <td class="bg-succes">
+                                        <td style="background-color: #95d69c">
                                             {{ ucfirst($pedido->estado) }}
                                         </td>
                                     @else
-                                        <td class="bg-warning">
+                                        <td style="background-color: #fff589">
                                             {{ ucfirst($pedido->estado) }}
                                         </td>
                                     @endif
@@ -68,6 +68,14 @@
                                             data-id="{{ $pedido->id }}"
                                             onclick="showModalModificarPedido(this)">
                                             Cambiar estado
+                                        </button>
+                                        <button 
+                                            data-bs-toggle="modal" 
+                                            data-bs-target="#modalEliminarPedido"        
+                                            class="btn btn-outline-danger btn-sm"
+                                            data-id="{{ $pedido->id }}"
+                                            onclick="showModalEliminarPedido(this)">
+                                            Eliminar
                                         </button>
                                     </td>
                                 </tr>
@@ -86,11 +94,20 @@
 
 <!-- Modal para cambiar estado -->
 @include('components.modalModificarPedido')
+@include('components.modalEliminarPedido')
 
 <script>
     function showModalModificarPedido(btn) {
         let actionCorrecto = window.location.protocol + "//" + window.location.host + "/pedidos/" + btn.dataset.id;
         $('#formModificarPedido').attr('action', actionCorrecto);
+    }
+
+    function showModalEliminarPedido(btn) {
+        let actionCorrecto = window.location.protocol + "//" + window.location.host + "/eliminarPedido/" + btn.dataset.id;
+
+        $('#idEliminarPedido').val(btn.dataset.id)
+
+        $('#formEliminarPedido').attr('action', actionCorrecto);
     }
 </script>
 @else
