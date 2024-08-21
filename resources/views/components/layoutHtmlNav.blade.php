@@ -37,10 +37,10 @@
             @else
                 <a href="#" class="me-2 text-light d-flex align-items-center" style="text-decoration: none;">
                     <img src="{{ asset('/img/logo.png') }}" alt="Inicio" style="width: 50px; height: 50px;">
-                    <span class="ms-2" style="font-family: 'system-ui', sans-serif; font-weight: bold; font-size: 1.5rem; color: #00293D;">
+                    <span class="ms-2" style="font-family: 'system-ui', sans-serif; font-weight: bold; font-size: 1.5rem; color: #0a3662;">
                         Paraná
                     </span>
-                    <span class="ms-2" style="font-family: 'system-ui', sans-serif; font-weight: bold; font-size: 1.5rem; color: ##C7330D;">
+                    <span class="ms-2" style="font-family: 'system-ui', sans-serif; font-weight: bold; font-size: 1.5rem; color: #7e1313;">
                         Sports
                     </span>
                 </a>

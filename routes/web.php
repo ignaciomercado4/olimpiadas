@@ -37,6 +37,7 @@
         Route::post('/cart/add/{productId}', [CartController::class, 'addToCart'])->name('cart-add');
         Route::get('/cart', [CartController::class, 'viewCart'])->name('cart-index');
         Route::post('/cart/save-pedido', [CartController::class, 'savePedido'])->name('cart-save-pedido');
+        Route::delete('/cart/delete/{id}', [CartController::class, 'deleteFromCart'])->name('cart-remove');
 
         // Pedidos
         Route::get('/pedidos', [PedidosController::class, 'showPedidos'])->name('viewPedidos');

@@ -92,4 +92,25 @@ class CartController extends Controller
     
         return redirect()->route('cart-index')->with('success', 'Pedido guardado exitosamente.');
     }
+
+    public function deleteFromCart($id){
+        $cartItem = Cart::findOrFail($id);
+        $user = Auth::user();
+
+        if ($cartItem->user_id == $user->id) {
+            if ($cartItem->quantity > 1) {
+                // si hay más de una unidad, reducir la cantidad en uno
+                $cartItem->quantity -= 1;
+                $cartItem->save();
+            } else {
+                // si solo hay una unidad, eliminar el item del carrito
+                $cartItem->delete();
+            }
+
+            return redirect()->route('cart-index')->with('success', 'Producto eliminado del carrito.');
+        }
+
+        return redirect()->route('cart-index')->with('error', 'No se pudo eliminar el producto del carrito.');
+    }
+
 }

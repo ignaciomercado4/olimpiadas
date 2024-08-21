@@ -33,12 +33,17 @@
                     <input type="number" step="0.01" name="precio_unitario" id="precioUnitarioInput" placeholder="Ingrese el precio unitario" class="form-control">
                 </div>
 
+                <div class="mb-3">
+                    <label for="stock" class="form-label">Stock</label>
+                    <input type="number" name="stock" id="stockInput" placeholder="Ingrese el stock" class="form-control">
+                </div>
+
                 <!-- Nuevo campo para la imagen -->
                 <div class="mb-3">
                     <label for="imagen" class="form-label">Imagen del Producto (acepta archivos .png, .jpg y .jpeg)</label>
-                    <p>
-                        Se recomienda que la imagen sea tenga una relacion de aspecto de 1:1.
-                    </p>
+                    <h6>
+                        Se recomienda que la imagen tenga una relación de aspecto de 1:1.
+                    </h6>
                     <input type="file" name="imagen" id="imagenInput" class="form-control">
                 </div>
 
