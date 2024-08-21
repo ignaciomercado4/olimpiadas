@@ -84,7 +84,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                El equipo de ventas de NderakoreSports se comunicará a su email 
+                El equipo de ventas de ParanáSports se comunicará a su email 
                 <span class="text-success fw-bolder">
                     {{ Auth::user()->email }}
                 </span> 
