@@ -32,9 +32,21 @@ class PedidosController extends Controller
     }
 
     public function delete($id) {
-        $pedidoAEliminar = Pedido::findOrFail($id);
-        $pedidoAEliminar->delete();
+        $pedido = Pedido::findOrFail($id);
 
-        return redirect()->back()->with('success', 'El pedido se ha eliminado correctamente.');
+        // eevolver el stock de los productos asociados al pedido
+        foreach ($pedido->products as $product) {
+            $cantidad = $product->pivot->quantity;
+            $product->stock += $cantidad;
+            $product->save();
+        }
+
+        // eliminar la relación entre el pedido y los productos
+        $pedido->products()->detach();
+
+        // eliminar el pedido
+        $pedido->delete();
+
+        return redirect()->route('cart-index')->with('success', 'Pedido eliminado y stock restaurado exitosamente.');
     }
 }
