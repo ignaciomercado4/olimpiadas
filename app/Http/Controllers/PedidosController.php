@@ -47,6 +47,6 @@ class PedidosController extends Controller
         // eliminar el pedido
         $pedido->delete();
 
-        return redirect()->route('cart-index')->with('success', 'Pedido eliminado y stock restaurado exitosamente.');
+        return redirect()->route('viewPedidos')->with('success', 'Pedido eliminado y stock restaurado exitosamente.');
     }
 }

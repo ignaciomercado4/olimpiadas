@@ -26,22 +26,22 @@ class ProductController extends Controller
 
         Product::create($productData);
     
-        return redirect(route('productoCreadoExitosamente'));
+        return redirect()->back()->with('success', 'Producto creado exitosamente.');
     }
 
     public function modify($id) {
         $productoAEditar = Product::findOrFail($id);
         $productoAEditar->update(request()->all());
-
-        return redirect(route('productosExistentes'));
+    
+        return redirect()->route('productosExistentes')->with('success', 'Producto modificado exitosamente.');
     }
-
+    
     public function delete($id) {
         $productoAEliminar = Product::findOrFail($id);
         $productoAEliminar->delete();
-
-        return redirect(route('productosExistentes'));
-    }
+    
+        return redirect()->route('productosExistentes')->with('success', 'Producto eliminado exitosamente.');
+    }    
 
     public function showProductosExistentes() {
         $productosExistentes = Product::all();

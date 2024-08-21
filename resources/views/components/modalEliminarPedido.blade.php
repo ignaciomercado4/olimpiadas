@@ -11,10 +11,10 @@
             @method('delete')
             @csrf
             <label for="id">
-                ¿Seguro que deseas eliminar el siguiente pedido?<br>
+                ¿Seguro que deseas eliminar el siguiente pedido? Al hacerlo, el stock de los productos que integran al pedido será restaurado.<br><br>
                 ID Pedido:
             </label>
-            <input type="text" name="id" id="idEliminarPedido">
+            <input type="text" name="id" id="idEliminarPedido" class="form-control">
         </form>
       </div>
         <div class="modal-footer">
