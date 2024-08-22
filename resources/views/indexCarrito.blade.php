@@ -32,6 +32,7 @@
                             <th>Cantidad</th>
                             <th>Precio Unitario</th>
                             <th>Total</th>
+                            <th>Imagen</th>
                             <th>Eliminar del carrito</th>
                         </tr>
                     </thead>
@@ -56,6 +57,9 @@
                                 <td>{{ $cantidad }}</td>
                                 <td>{{ $precioUnitario }} $</td>
                                 <td>{{ $precioUnitario * $cantidad }} $</td>
+                                <td>
+                                    <img src="{{$item->product->imagen}}" style="width: 100px; height: 100px; object-fit: cover;">
+                                </td>
                                 <td>
                                     <button 
                                     class="btn btn-outline-danger"

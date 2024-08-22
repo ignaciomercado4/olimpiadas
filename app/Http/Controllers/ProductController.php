@@ -29,9 +29,27 @@ class ProductController extends Controller
         return redirect()->back()->with('success', 'Producto creado exitosamente.');
     }
 
-    public function modify($id) {
+    public function modify(Request $request, $id) {
+        
+        $request->validate([
+            'codigo_producto' => 'required',
+            'titulo' => 'required',
+            'descripcion' => 'required',
+            'precio_unitario' => 'required|numeric',
+            'imagen' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048' // validación de imagen
+        ]);
+
         $productoAEditar = Product::findOrFail($id);
-        $productoAEditar->update(request()->all());
+        
+        if ($request->hasFile('imagen')) {
+            $imageName = time().'.'.$request->imagen->extension();  
+            $request->imagen->move(public_path('images'), $imageName);
+            $productoAEditar->imagen = 'images/' . $imageName;
+        }        
+
+        $productoAEditar->fill($request->except('imagen'));
+        
+        $productoAEditar->save();
     
         return redirect()->route('productosExistentes')->with('success', 'Producto modificado exitosamente.');
     }

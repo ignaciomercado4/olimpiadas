@@ -6,7 +6,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form action="" method="POST" id="formModificarProducto">
+        <form action="" method="POST" id="formModificarProducto" enctype="multipart/form-data">
           @method('PUT')
           @csrf
 
@@ -39,6 +39,10 @@
             Stock:
           </label>
           <input type="number" name="stock" id="modificarStockInput" placeholder="Stock" class="form-control" value="" disabledº>
+          <label for="imagen" class="label">
+            Imagen:
+          </label>
+          <input type="file" name="imagen" id="modificarImagenInput" class="form-control" value="">
       </form>
     </div>
       <div class="modal-footer">

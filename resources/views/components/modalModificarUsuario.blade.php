@@ -45,7 +45,7 @@
                         
                         <label for="modificarAdminInput" class="form-label">Administrador:</label>
                         <select name="isAdmin" id="modificarAdminInput" class="from-control" 
-                        @if (Auth::user->id == $user->id)
+                        @if (Auth::user()->id == $user->id)
                             disabled
                         @endif
                         >

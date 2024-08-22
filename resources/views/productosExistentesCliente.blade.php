@@ -18,7 +18,7 @@
 
                     <div class="card-body d-flex flex-column">
                         <h5 class="card-title">{{ Str::limit($producto->titulo, 30) }}</h5>
-                        <p class="card-text">{{ Str::limit($producto->descripcion, 50) }}</p>
+                        <p class="card-text">{{ Str::limit($producto->descripcion, 110) }}</p>
                         <p class="card-text mt-auto"><strong>Precio:</strong> ${{ $producto->precio_unitario }}</p>
                         <p class="card-text"><strong>Stock:</strong>
                             @if ($producto->stock > 0)
@@ -42,7 +42,7 @@
 
 <style>
     .product-card {
-        height: 450px;
+        height: 500px;
         display: flex;
         flex-direction: column;
     }

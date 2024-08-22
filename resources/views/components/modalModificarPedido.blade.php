@@ -9,6 +9,9 @@
                 <p class="text-warning">
                     ¡Si cambias el estado del pedido a entregado, se tomará como venta realizada!
                 </p>
+                <p class="text-danger">
+                    Esta acción no se puede deshacer.
+                </p>
                 <!-- contenido del modal para cambiar el estado del pedido -->
                 <form action="" id="formModificarPedido" method="POST">
                     @csrf

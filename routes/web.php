@@ -50,5 +50,6 @@
 
         // Ventas históricas
         Route::get('/ventas', [VentasController::class, 'showVentas'])->name('viewVentas');
+        Route::delete('/eliminarVentas/{id}', [VentasController::class, 'delete'])->name('eliminarVentas');
     });
 ?>

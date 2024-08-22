@@ -22,6 +22,7 @@
                                 <th>Comprador</th>
                                 <th>Número de Pedido</th>
                                 <th>Dirección</th>
+                                <th>Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -33,6 +34,20 @@
                                     <td>{{ $venta->comprador }}</td>
                                     <td>{{ $venta->numero_pedido }}</td>
                                     <td>{{ $venta->direccion }}</td>
+                                    <td><button 
+                                        data-bs-toggle="modal" 
+                                        data-bs-target="#modalEliminarVenta"        
+                                        class="btn btn-danger m-1"
+                                        style="font-size: 12px;"
+                                        data-id="{{$venta->id}}"
+                                        data-fecha="{{ date('d/m/Y', strtotime(($venta->created_at))) }}"
+                                        data-total="{{$venta->total}}"
+                                        data-comprador="{{$venta->comprador}}"
+                                        data-numero_pedido="{{$venta->numero_pedido}}"
+                                        data-direccion="{{$venta->direccion}}"
+                                        onclick="mostrarModalEliminarVenta(this)">
+                                            Eliminar
+                                        </button></td>
                                 </tr>
                             @endforeach
                         </tbody>
@@ -46,6 +61,30 @@
         </div>
     </div>
 </div>
+
+@include('components.modalEliminarVenta')
+
+<script
+    src="https://code.jquery.com/jquery-3.7.1.js"
+    integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+    crossorigin="anonymous"></script>
+
+<script>
+    function mostrarModalEliminarVenta(btn) {
+    let actionCorrecto = window.location.protocol + "//" + window.location.host + "/eliminarVentas/" + btn.dataset.id;
+    $('#formEliminarVenta').attr('action', actionCorrecto);
+
+    $('#eliminarIDInput').val(btn.dataset.id);
+    $('#eliminarFechaInput').val(btn.dataset.fecha);
+    $('#eliminarTotalInput').val(btn.dataset.total);
+    $('#eliminarCompradorInput').val(btn.dataset.comprador);
+    $('#eliminarNumeroPedidoInput').val(btn.dataset.numero_pedido);
+    $('#eliminarDireccionInput').val(btn.dataset.direccion);
+
+    $('#modalEliminarVenta').show;
+}
+
+</script>
 @else
     @include('components.usuarioNoAutorizado')
 @endif

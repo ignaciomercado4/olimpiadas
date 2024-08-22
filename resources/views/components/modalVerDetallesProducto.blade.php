@@ -11,7 +11,7 @@
                     <div class="col-md-6">
                         <!-- Imagen del producto en tamaño completo -->
                         @if($producto->imagen)
-                        <img src="{{ asset('/' . $producto->imagen) }}" class="img-fluid" alt="{{ $producto->titulo }}">
+                        <img src="{{ asset('/' . $producto->imagen) }}" class="img-fluid" style="min-width: 50%; min-height: auto; " alt="{{ $producto->titulo }}">
                         @else
                         <img src="https://via.placeholder.com/500" class="img-fluid" alt="Imagen no disponible">
                         @endif
@@ -21,7 +21,7 @@
                         <p class="card-text">{{ $producto->descripcion }}</p>
                         <p class="card-text"><strong>Precio:</strong> ${{ $producto->precio_unitario }}</p>
                         <p class="card-text"><strong>Stock:</strong>
-                            @if ($producto->stock > 0)
+                            @if ($producto->stock >= 0)
                                 {{ $producto->stock }}
                             @else
                                 Sin stock
@@ -29,7 +29,7 @@
                         </p>
                         <form action="{{ route('cart-add', $producto->id) }}" method="POST">
                             @csrf
-                            @if ($producto->stock >= 0)
+                            @if ($producto->stock <= 0)
                                 <p class="text-warning fw-bold">
                                     No hay stock de este producto, ¡lo sentimos!
                                 </p>

@@ -20,10 +20,13 @@
                 Precio unitario
             </th>
             <th>
+                Stock
+            </th>
+            <th>
                 Fecha de creación
             </th>
             <th>
-                Stock
+                Imagen
             </th>
             <th>
                 Acciones
@@ -39,6 +42,9 @@
                 <td>{{ $producto->stock }}</td>
                 <td>{{ date('d/m/Y', strtotime($producto->created_at)) }}</td>
                 <td>
+                    <img src="{{$producto->imagen}}" style="width: 100px; height: 100px; object-fit: cover;">
+                </td>
+                <td>
                     <button 
                     data-bs-toggle="modal" 
                     data-bs-target="#modalModificarProducto"        
@@ -51,6 +57,7 @@
                     data-descripcion="{{$producto->descripcion}}"
                     data-precio="{{$producto->precio_unitario}}"
                     data-fecha="{{ date('d/m/Y', strtotime(($producto->created_at))) }}"
+                    data-imagen="{{$producto->imagen}}"
                     onclick="mostrarModalModificar(this)">
                         Modificar
                     </button>
@@ -68,6 +75,7 @@
                     data-descripcion="{{$producto->descripcion}}"
                     data-precio="{{$producto->precio_unitario}}"
                     data-fecha="{{ date('d/m/Y', strtotime(($producto->created_at))) }}"
+                    data-imagen="{{$producto->imagen}}"
                     onclick="mostrarModalEliminar(this)">
                         Eliminar
                     </button>
