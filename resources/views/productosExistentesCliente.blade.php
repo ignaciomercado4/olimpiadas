@@ -8,7 +8,7 @@
     <div class="row">
         @foreach ($productosExistentes as $producto)
             <div class="col-md-4">
-                <div class="card mb-4 shadow-sm">
+                <div class="card mb-4 shadow-sm product-card">
                     <!-- Mostrar la imagen del producto -->
                     @if($producto->imagen)
                     <img src="{{ asset('/' . $producto->imagen) }}" class="card-img-top product-image" alt="{{ $producto->titulo }}">
@@ -16,11 +16,17 @@
                     <img src="https://via.placeholder.com/150" class="card-img-top product-image" alt="Imagen no disponible">
                     @endif
 
-                    <div class="card-body">
-                        <h5 class="card-title">{{ $producto->titulo }}</h5>
-                        <p class="card-text">{{ Str::limit($producto->descripcion, 100) }}</p>
-                        <p class="card-text"><strong>Precio:</strong> ${{ $producto->precio_unitario }}</p>
-                        <p class="card-text"><strong>Stock:</strong> {{ $producto->stock }}</p>
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">{{ Str::limit($producto->titulo, 30) }}</h5>
+                        <p class="card-text">{{ Str::limit($producto->descripcion, 50) }}</p>
+                        <p class="card-text mt-auto"><strong>Precio:</strong> ${{ $producto->precio_unitario }}</p>
+                        <p class="card-text"><strong>Stock:</strong>
+                            @if ($producto->stock > 0)
+                                {{ $producto->stock }}
+                            @else
+                                Sin stock
+                            @endif
+                        </p>
                         <!-- Botón para abrir el modal -->
                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#productModal{{ $producto->id }}">
                             Ver detalles
@@ -35,10 +41,25 @@
 </div>
 
 <style>
+    .product-card {
+        height: 450px;
+        display: flex;
+        flex-direction: column;
+    }
+
     .product-image {
         width: 100%;
         height: 200px;
         object-fit: cover;
+    }
+
+    .card-body {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .card-text.mt-auto {
+        margin-top: auto;
     }
 </style>
 @endsection

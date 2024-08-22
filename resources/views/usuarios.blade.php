@@ -49,7 +49,8 @@
                                             data-email="{{ $user->email }}"
                                             data-direccion="{{ $user->direccion }}"
                                             data-admin="{{ $user->isAdmin }}"
-                                            onclick="mostrarModalModificarUsuario(this)">
+                                            onclick="mostrarModalModificarUsuario(this)"
+                                            >
                                             Modificar
                                         </button>
                                     </td>

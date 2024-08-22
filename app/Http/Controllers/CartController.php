@@ -66,13 +66,19 @@ class CartController extends Controller
             return $precioUnitario * $cantidad;
         });
     
-        // crear el pedido
+        // construir la cadena de productos
+        $productos = $cartItems->map(function($cartItem) {
+            return $cartItem->product->codigo_producto . '(x' . $cartItem->quantity . ')';
+        })->implode(', ');
+    
+        // crear el pedido con el campo productos
         $pedido = Pedido::create([
             'user_id' => $user->id,
             'total' => $total,
             'comprador' => $user->email,
             'direccion' => $user->direccion,
             'estado' => 'pendiente',
+            'productos' => $productos, // guardar la cadena en el campo productos
         ]);
     
         // asignar los productos al pedido y reducir el stock
@@ -92,6 +98,7 @@ class CartController extends Controller
     
         return redirect()->route('cart-index')->with('success', 'Pedido guardado exitosamente.');
     }
+    
 
     public function deleteFromCart($id){
         $cartItem = Cart::findOrFail($id);

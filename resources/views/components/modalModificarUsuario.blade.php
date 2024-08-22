@@ -42,8 +42,13 @@
                             </span>
                             teniendo acceso total a los datos de la empresa.
                         </p>
+                        
                         <label for="modificarAdminInput" class="form-label">Administrador:</label>
-                        <select name="isAdmin" id="modificarAdminInput" class="from-control">
+                        <select name="isAdmin" id="modificarAdminInput" class="from-control" 
+                        @if (Auth::user->id == $user->id)
+                            disabled
+                        @endif
+                        >
                             <option value="0">No</option>
                             <option value="1">Si</option>
                         </select>

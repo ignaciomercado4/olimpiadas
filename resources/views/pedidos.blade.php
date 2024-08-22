@@ -39,6 +39,7 @@
                                 <th>Estado</th>
                                 <th>Fecha</th>
                                 <th>Dirección del comprador</th>
+                                <th>Productos</th>
                                 <th>Acciones</th>
                             </tr>
                         </thead>
@@ -60,13 +61,18 @@
                                     @endif
                                     <td>{{ date('d/m/Y', strtotime($pedido->created_at)) }}</td>
                                     <td>{{ $pedido->direccion }}</td>
+                                    <td>{{ $pedido->productos }}</td>
                                     <td>
                                         <button 
                                             data-bs-toggle="modal" 
                                             data-bs-target="#modalModificarPedido"        
                                             class="btn btn-outline-primary btn-sm"
                                             data-id="{{ $pedido->id }}"
-                                            onclick="showModalModificarPedido(this)">
+                                            onclick="showModalModificarPedido(this)"
+                                            @if ($pedido->estado == "entregado")
+                                                disabled
+                                            @endif
+                                            >
                                             Cambiar estado
                                         </button>
                                         <button 

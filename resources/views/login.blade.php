@@ -5,6 +5,17 @@
 
 
 @section('body')
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
+
     <div class="d-flex justify-content-center align-items-center vh-700">
         <div class="container bg-light rounded-4 w-25 p-5 mb-5 mt-5"id="card" style="height: 30vw">
             <h1 class="text-center mb-5">Bienvenido</h1>
@@ -20,7 +31,8 @@
                 </div>
                 <button type="submit" class="btn btn-primary w-100">Login</button>
             </form>
-            <div class="text-center mt-3">
+            <div class="text-center mt-3 pt-4">
+
                 ¿No tenés cuenta? 
                 <a href="{{ route('viewRegister') }}"> Registrate acá.</a>
             </div>

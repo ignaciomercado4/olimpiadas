@@ -20,10 +20,16 @@
                         <h5 class="card-title">{{ $producto->titulo }}</h5>
                         <p class="card-text">{{ $producto->descripcion }}</p>
                         <p class="card-text"><strong>Precio:</strong> ${{ $producto->precio_unitario }}</p>
-                        <p class="card-text"><strong>Stock:</strong> {{ $producto->stock }}</p>
+                        <p class="card-text"><strong>Stock:</strong>
+                            @if ($producto->stock > 0)
+                                {{ $producto->stock }}
+                            @else
+                                Sin stock
+                            @endif
+                        </p>
                         <form action="{{ route('cart-add', $producto->id) }}" method="POST">
                             @csrf
-                            @if ($producto->stock == 0)
+                            @if ($producto->stock >= 0)
                                 <p class="text-warning fw-bold">
                                     No hay stock de este producto, ¡lo sentimos!
                                 </p>
