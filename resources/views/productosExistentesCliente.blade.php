@@ -27,10 +27,21 @@
                                 Sin stock
                             @endif
                         </p>
-                        <!-- Botón para abrir el modal -->
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#productModal{{ $producto->id }}">
-                            Ver detalles
-                        </button>
+                        <!-- Contenedor para los botones -->
+                        <div class="d-flex mt-3">
+                            <!-- Botón para abrir el modal -->
+                            <button type="button" class="btn btn-primary me-2" data-bs-toggle="modal" data-bs-target="#productModal{{ $producto->id }}">
+                                Ver detalles
+                            </button>
+                            <form action="{{ route('cart-add', $producto->id) }}" method="POST">
+                                @csrf
+                                @if ($producto->stock <= 0)
+                                    <button type="submit" class="btn btn-success" disabled>Agregar al carrito</button>
+                                @else
+                                    <button type="submit" class="btn btn-success">Agregar al carrito</button>
+                                @endif
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
