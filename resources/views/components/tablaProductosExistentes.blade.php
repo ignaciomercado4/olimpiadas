@@ -50,8 +50,8 @@
                     {{ $producto->descripcion }}
                 </td>
                 <td>
-                    {{ $producto->precio_unitario }}<
-                    /td>
+                    {{ $producto->precio_unitario }}
+                    </td>
                 <td>
                     {{ $producto->stock }}
                 </td>

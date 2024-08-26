@@ -30,10 +30,6 @@
           <label for="precio_unitario" class="label">
             Precio unitario:
           </label>
-          <label for="categoria" class="label">
-            Categoría:
-          </label>
-          <input type="text" name="categoria" id="modificarCategoriaInput" placeholder="Categoría" class="form-control" value="" disabled>
           <input type="text" name="precio_unitario" id="modificarPrecioInput" placeholder="Precio" class="form-control" value="">
           <label for="fecha" class="label">
             Fecha de creación:
@@ -43,6 +39,10 @@
             Stock:
           </label>
           <input type="number" name="stock" id="modificarStockInput" placeholder="Stock" class="form-control" value="" disabledº>
+          <label for="categoria" class="label">
+            Categoría:
+          </label>
+          <input type="text" name="categoria" id="modificarCategoriaInput" placeholder="Categoría" class="form-control" value="" disabled>
           <label for="imagen" class="label">
             Imagen:
           </label>

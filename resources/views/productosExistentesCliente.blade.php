@@ -6,27 +6,34 @@
 @section('body')
 <div class="container mt-5">
     <!-- Barra de búsqueda -->
-    <div class="row mb-4">
-        <div class="col-md-12">
-            <input type="text" id="search" class="form-control w-50" placeholder="🔎Buscar productos...">
-        </div>
-    </div>
+    @include('components.barraDeBusqueda')
+    
+    <!-- Sidebar -->
+    @include('components.sidebarFiltros')
 
+        <!-- Productos -->
     <div class="row" id="product-container">
         @foreach ($productosExistentes as $producto)
             <div class="col-md-4 product-col">
                 <div class="card mb-4 shadow-sm product-card">
-                    <!-- Mostrar la imagen del producto -->
                     @if($producto->imagen)
-                    <img src="{{ asset('/' . $producto->imagen) }}" class="card-img-top product-image" alt="{{ $producto->titulo }}">
+                        <img src="{{ asset('/' . $producto->imagen) }}" class="card-img-top product-image" alt="{{ $producto->titulo }}">
                     @else
-                    <img src="https://via.placeholder.com/150" class="card-img-top product-image" alt="Imagen no disponible">
+                        <img src="https://via.placeholder.com/150" class="card-img-top product-image" alt="Imagen no disponible">
                     @endif
-
                     <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">{{ Str::limit($producto->titulo, 30) }}</h5>
-                        <p class="card-text">{{ Str::limit($producto->descripcion, 110) }}</p>
-                        <p class="card-text mt-auto"><strong>Precio:</strong> ${{ $producto->precio_unitario }}</p>
+                        <h5 class="card-title">
+                            {{ Str::limit($producto->titulo, 30) }} - <span style="font-size: 16px;" class="opacity-50">{{ $producto->categoria }}</span>
+                            
+
+                        </h5>
+                        <p class="card-text">
+                            {{ Str::limit($producto->descripcion, 110) }}
+
+                        </p>
+                        <p class="card-text mt-auto"><strong>Precio:</strong>
+                            ${{ $producto->precio_unitario }}
+                        </p>
                         <p class="card-text"><strong>Stock:</strong>
                             @if ($producto->stock > 0)
                                 {{ $producto->stock }}
@@ -34,9 +41,8 @@
                                 Sin stock
                             @endif
                         </p>
-                        <!-- Contenedor para los botones -->
+
                         <div class="d-flex mt-3">
-                            <!-- Botón para abrir el modal -->
                             <button type="button" class="btn btn-primary me-2" data-bs-toggle="modal" data-bs-target="#productModal{{ $producto->id }}">
                                 Ver detalles
                             </button>
@@ -56,28 +62,36 @@
             @include('components.modalVerDetallesProducto')
         @endforeach
     </div>
+
 </div>
 
 <script type="text/javascript">
-document.getElementById('search').addEventListener('input', function() {
-    let searchQuery = this.value.toLowerCase();
-    let cards = document.querySelectorAll('.product-card');
-
-    cards.forEach(card => {
-        let title = card.querySelector('.card-title').textContent.toLowerCase();
-        let cardCol = card.closest('.product-col');
-
-        if (title.includes(searchQuery) || searchQuery === '') {
-            cardCol.style.display = 'block'; 
-            cardCol.parentNode.appendChild(cardCol); 
-                } else {
-            cardCol.style.display = 'none';
-        }
+    document.getElementById('openSidebar').addEventListener('click', function() {
+        document.getElementById('filterSidebar').style.left = '0';
     });
-});
+
+    document.getElementById('closeSidebar').addEventListener('click', function() {
+        document.getElementById('filterSidebar').style.left = '-300px'; 
+    });
+
 </script>
 
 <style>
+    .sidebar {
+        width: 300px;
+        position: fixed;
+        top: 0;
+        left: -300px; 
+        height: 100%;
+        z-index: 1050;
+        background-color: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(10px);
+        overflow-y: auto;
+        transition: left 0.3s ease;
+        padding-top: 20px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
     .product-card {
         height: 500px;
         display: flex;

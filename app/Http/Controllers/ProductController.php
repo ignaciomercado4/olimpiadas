@@ -63,8 +63,24 @@ class ProductController extends Controller
 
     public function showProductosExistentes(Request $request) {
         $query = $request->input('search');
-        $productosExistentes = Product::where('titulo', 'LIKE', "%$query%")->get();
-        return view('productosExistentes', compact('productosExistentes'));
+        $categorias = $request->input('categoria', []);
+    
+        $productosExistentes = Product::query();
+    
+        if ($query) {
+            $productosExistentes->where('titulo', 'LIKE', "%$query%");
+        }
+    
+        if (!empty($categorias)) {
+            $productosExistentes->whereIn('categoria', $categorias);
+        }
+    
+        $productosExistentes = $productosExistentes->get();
+    
+        $categoriasDisponibles = ['Calzado', 'Remera', 'Pantalón', 'Short', 'Pelota', 'Accesorios', 'Utilidades', 'Otros'];
+    
+        return view('productosExistentes', compact('productosExistentes', 'categoriasDisponibles'));
     }
+    
     
 }
