@@ -5,9 +5,16 @@
 
 @section('body')
 <div class="container mt-5">
-    <div class="row">
+    <!-- Barra de búsqueda -->
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <input type="text" id="search" class="form-control" placeholder="Buscar productos...">
+        </div>
+    </div>
+
+    <div class="row" id="product-container">
         @foreach ($productosExistentes as $producto)
-            <div class="col-md-4">
+            <div class="col-md-4 product-col">
                 <div class="card mb-4 shadow-sm product-card">
                     <!-- Mostrar la imagen del producto -->
                     @if($producto->imagen)
@@ -50,6 +57,25 @@
         @endforeach
     </div>
 </div>
+
+<script type="text/javascript">
+document.getElementById('search').addEventListener('input', function() {
+    let searchQuery = this.value.toLowerCase();
+    let cards = document.querySelectorAll('.product-card');
+
+    cards.forEach(card => {
+        let title = card.querySelector('.card-title').textContent.toLowerCase();
+        let cardCol = card.closest('.product-col');
+
+        if (title.includes(searchQuery) || searchQuery === '') {
+            cardCol.style.display = 'block'; 
+            cardCol.parentNode.appendChild(cardCol); 
+                } else {
+            cardCol.style.display = 'none';
+        }
+    });
+});
+</script>
 
 <style>
     .product-card {

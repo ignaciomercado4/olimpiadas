@@ -61,9 +61,10 @@ class ProductController extends Controller
         return redirect()->route('productosExistentes')->with('success', 'Producto eliminado exitosamente.');
     }    
 
-    public function showProductosExistentes() {
-        $productosExistentes = Product::all();
-
+    public function showProductosExistentes(Request $request) {
+        $query = $request->input('search');
+        $productosExistentes = Product::where('titulo', 'LIKE', "%$query%")->get();
         return view('productosExistentes', compact('productosExistentes'));
     }
+    
 }
