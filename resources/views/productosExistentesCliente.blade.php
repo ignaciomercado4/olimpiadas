@@ -8,7 +8,7 @@
     <!-- Barra de búsqueda -->
     <div class="row mb-4">
         <div class="col-md-12">
-            <input type="text" id="search" class="form-control" placeholder="Buscar productos...">
+            <input type="text" id="search" class="form-control w-50" placeholder="🔎Buscar productos...">
         </div>
     </div>
 

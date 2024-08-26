@@ -29,20 +29,40 @@
                 Imagen
             </th>
             <th>
+                Categoria
+            </th>
+            <th>
                 Acciones
             </th>
         </tr>
         @foreach($productosExistentes as $producto)
             <tr class="text-center">
-                <td>{{ $producto->id }}</td>
-                <td>{{ $producto->codigo_producto }}</td>
-                <td>{{ $producto->titulo }}</td>
-                <td>{{ $producto->descripcion }}</td>
-                <td>{{ $producto->precio_unitario }}</td>
-                <td>{{ $producto->stock }}</td>
-                <td>{{ date('d/m/Y', strtotime($producto->created_at)) }}</td>
+                <td>
+                    {{ $producto->id }}
+                </td>
+                <td>
+                    {{ $producto->codigo_producto }}
+                </td>
+                <td>
+                    {{ $producto->titulo }}
+                </td>
+                <td>
+                    {{ $producto->descripcion }}
+                </td>
+                <td>
+                    {{ $producto->precio_unitario }}<
+                    /td>
+                <td>
+                    {{ $producto->stock }}
+                </td>
+                <td>
+                    {{ date('d/m/Y', strtotime($producto->created_at)) }}
+                </td>
                 <td>
                     <img src="{{$producto->imagen}}" style="width: 100px; height: 100px; object-fit: cover;">
+                </td>
+                <td>
+                    {{ $producto->categoria }}
                 </td>
                 <td>
                     <button 
@@ -56,6 +76,7 @@
                     data-titulo="{{$producto->titulo}}"
                     data-descripcion="{{$producto->descripcion}}"
                     data-precio="{{$producto->precio_unitario}}"
+                    data-categoria="{{$producto->categoria}}"
                     data-fecha="{{ date('d/m/Y', strtotime(($producto->created_at))) }}"
                     data-imagen="{{$producto->imagen}}"
                     onclick="mostrarModalModificar(this)">
@@ -73,6 +94,7 @@
                     data-stock="{{$producto->stock}}"
                     data-titulo="{{$producto->titulo}}"
                     data-descripcion="{{$producto->descripcion}}"
+                    data-categoria="{{$producto->categoria}}"
                     data-precio="{{$producto->precio_unitario}}"
                     data-fecha="{{ date('d/m/Y', strtotime(($producto->created_at))) }}"
                     data-imagen="{{$producto->imagen}}"
@@ -102,6 +124,7 @@
             $('#modificarTituloInput').val(btn.dataset.titulo);
             $('#modificarDescripcionInput').val(btn.dataset.descripcion);
             $('#modificarPrecioInput').val(btn.dataset.precio);
+            $('#modificarCategoriaInput').val(btn.dataset.categoria);
             $('#modificarStockInput').val(btn.dataset.stock);
             $('#modificarFechaInput').val(btn.dataset.fecha);
 
@@ -117,6 +140,7 @@
             $('#eliminarCodigoInput').val(btn.dataset.codigo);
             $('#eliminarTituloInput').val(btn.dataset.titulo);
             $('#eliminarDescripcionInput').val(btn.dataset.descripcion);
+            $('#eliminarCategoriaInput').val(btn.dataset.categoria);
             $('#eliminarPrecioInput').val(btn.dataset.precio);
             $('#eliminarStockInput').val(btn.dataset.stock);
             $('#eliminarFechaInput').val(btn.dataset.fecha);

@@ -31,6 +31,10 @@
               Precio unitario:
             </label>
             <input type="text" name="precio_unitario" id="eliminarPrecioInput" placeholder="Precio" class="form-control" value="" disabled>
+            <label for="categoria" class="label">
+              Categoría:
+            </label>
+            <input type="text" name="categoria" id="eliminarCategoriaInput" placeholder="Categoría" class="form-control" value="" disabled>
             <label for="fecha" class="label">
               Fecha de creación:
             </label>

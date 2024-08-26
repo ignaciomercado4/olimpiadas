@@ -56,7 +56,37 @@
                     <input type="number" name="stock" id="stockInput" placeholder="Ingrese el stock" class="form-control">
                 </div>
 
-                <!-- Nuevo campo para la imagen -->
+                <div class="mb-3">
+                    <label for="categoria" class="form-label">Categoria</label>
+                    <select name="categoria" id="categoriaInput" class="form-control">
+                        <option value="Calzado">
+                            Calzado
+                        </option>
+                        <option value="Remera">
+                            Remera
+                        </option>
+                        <option value="Pantalón">
+                            Pantalón
+                        </option>
+                        <option value="Short">
+                            Short
+                        </option>
+                        <option value="Pelota">
+                            Pelota
+                        </option>
+                        <option value="Accesorios">
+                            Accesorios
+                        </option>
+                        <option value="Utilidades">
+                            Utilidades
+                        </option>
+                        <option value="Otro">
+                            Otro
+                        </option>
+                    </select>
+                </div>
+
+                <!-- Campo para la imagen -->
                 <div class="mb-3">
                     <label for="imagen" class="form-label">Imagen del Producto (acepta archivos .png, .jpg y .jpeg)</label>
                     <h6>
