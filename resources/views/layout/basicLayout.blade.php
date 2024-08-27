@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 @include('components.layoutHtmlHead')
-<body style="background-color: #8acdef">
+<body style="background-color: #8acdef; font-family: 'Quicksand', Sans Serif !important;">
 
     {{-- nav --}}
     @include('components.layoutHtmlNav')

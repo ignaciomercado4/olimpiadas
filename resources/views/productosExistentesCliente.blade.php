@@ -11,7 +11,7 @@
     <!-- Sidebar -->
     @include('components.sidebarFiltros')
 
-        <!-- Productos -->
+    <!-- Productos -->
     <div class="row" id="product-container">
         @foreach ($productosExistentes as $producto)
             <div class="col-md-4 product-col">
@@ -24,16 +24,11 @@
                     <div class="card-body d-flex flex-column">
                         <h5 class="card-title">
                             {{ Str::limit($producto->titulo, 30) }} - <span style="font-size: 16px;" class="opacity-50">{{ $producto->categoria }}</span>
-                            
-
                         </h5>
                         <p class="card-text">
                             {{ Str::limit($producto->descripcion, 110) }}
-
                         </p>
-                        <p class="card-text mt-auto"><strong>Precio:</strong>
-                            ${{ $producto->precio_unitario }}
-                        </p>
+                        <p class="card-text mt-auto"><strong>Precio:</strong> ${{ $producto->precio_unitario }}</p>
                         <p class="card-text"><strong>Stock:</strong>
                             @if ($producto->stock > 0)
                                 {{ $producto->stock }}

@@ -78,9 +78,8 @@ class ProductController extends Controller
         $productosExistentes = $productosExistentes->get();
     
         $categoriasDisponibles = ['Calzado', 'Remera', 'Pantalón', 'Short', 'Pelota', 'Accesorios', 'Utilidades', 'Otros'];
+        $categoriasFiltradas = $categorias;
     
-        return view('productosExistentes', compact('productosExistentes', 'categoriasDisponibles'));
-    }
-    
-    
+        return view('productosExistentes', compact('productosExistentes', 'categoriasDisponibles', 'categoriasFiltradas'));
+    }    
 }

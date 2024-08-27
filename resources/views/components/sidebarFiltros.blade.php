@@ -1,18 +1,55 @@
-<!-- Sidebar -->
-<div id="filterSidebar" class="sidebar bg-light shadow-lg p-4 rounded">
-    <div class="d-flex justify-content-between align-items-center mb-4">
-        <h5 class="mb-0">Filtrar por Categoría</h5>
-        <button id="closeSidebar" class="btn-close"></button>
-    </div>
-    <form id="filter-form" method="GET" action="{{ route('productosExistentes') }}">
-        <ul class="list-group list-group-flush">
-            @foreach ($categoriasDisponibles as $categoria)
-                <li class="list-group-item bg-transparent border-0">
-                    <input type="checkbox" name="categoria[]" value="{{ $categoria }}" id="cat{{ $categoria }}" class="form-check-input">
-                    <label for="cat{{ $categoria }}" class="form-check-label">{{ $categoria }}</label>
-                </li>
+<!-- Sidebar de Filtros -->
+<div id="filterSidebar" class="sidebar">
+    <button id="closeSidebar" class="btn position-absolute end-0 me-2">
+        X
+    </button>
+    <form action="{{ route('productosExistentes') }}" method="GET" class="mt-4 ml-2">
+        <h5>Filtrar por Categoría</h5>
+        <div class="form-group">
+            @foreach($categoriasDisponibles as $categoria)
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="categoria[]" value="{{ $categoria }}" id="categoria{{ $loop->index }}"
+                            {{ in_array($categoria, $categoriasFiltradas) ? 'checked' : '' }}>
+                    <label class="form-check-label" for="categoria{{ $loop->index }}">
+                        {{ $categoria }}
+                    </label>
+                </div>
             @endforeach
-        </ul>
-        <button type="submit" id="filter-button" class="btn btn-primary mt-3 w-100">Aplicar Filtros</button>
+        </div>
+        <button type="submit" class="btn btn-primary mt-3">
+            Filtrar
+        </button>
     </form>
 </div>
+
+<style>
+    .sidebar {
+    width: 300px;
+    position: fixed;
+    top: 0;
+    left: -300px; 
+    height: 100%;
+    z-index: 1050;
+    background-color: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    overflow-y: auto;
+    transition: left 0.3s ease;
+    padding-top: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding-right: 10px; /* Ajusta el padding para la X */
+}
+
+.btn.position-absolute.end-0 {
+    top: 10px; /* Ajusta la distancia desde el borde superior */
+}
+
+.sidebar form {
+    padding-top: 40px; /* Espacio para la X */
+}
+
+.sidebar .btn-primary {
+    display: block;
+    margin: 0 auto;
+}
+
+</style>
